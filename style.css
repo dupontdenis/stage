@@ -1,0 +1,65 @@
+#tag-bars {
+  margin-top: 30px;
+  padding: 10px;
+  width: 80%;
+}
+
+/* Base style */
+.tag-bar {
+  height: 32px;
+  margin: 8px 0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  position: relative;
+  color: #222;
+  overflow: hidden;
+  /* empêche le hover de dépasser */
+}
+
+/* Colors per category */
+.tag-bar[data-category="VeryRare"] {
+  background: #d0e8ff;
+}
+
+.tag-bar[data-category="Rare"] {
+  background: #d8ffd0;
+}
+
+.tag-bar[data-category="Medium"] {
+  background: #fff4d0;
+}
+
+.tag-bar[data-category="Frequent"] {
+  background: #ffe0e0;
+}
+
+.tag-bar[data-category="Dominant"] {
+  background: #f0d0ff;
+}
+
+.tag-label {
+  z-index: 1;
+}
+
+/* Hover: show count INSIDE the bar */
+.tag-bar::before {
+  content: attr(data-count);
+  position: absolute;
+  right: 10px;
+  /* inside the bar */
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity .2s;
+  color: #333;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.tag-bar:hover::before {
+  opacity: 1;
+}
